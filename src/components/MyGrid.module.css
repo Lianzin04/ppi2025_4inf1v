@@ -1,13 +1,13 @@
 .grid {
-  padding: 3rem;
+  padding: 1rem;
   display: grid;
-  gap: 3rem;
+  gap: 2rem;
   grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
   grid-template-rows: repeat(auto-fit, min-content);
 }
 
 .card {
-  height: 20rem;
+  height: 60rem;
   background-color: var(--primary-dark);
   color: var(--primary-contrast-light);
   padding: 1rem;
@@ -21,20 +21,18 @@
   display: grid;
 
   grid-template-areas:
-    "header1 header1"
-    "aside header2"
-    "aside main"
-    "footer footer";
+    "header1"
+    "main"
+    "footer";
 
-  grid-template-columns: 1fr 3fr;
-  grid-template-rows: 10rem 5rem auto 10rem;
+  grid-template-columns: 1fr; 
+  grid-template-rows: 10rem auto 10rem;
 
   @media (max-width: 1200px) {
     grid-template-areas:
       "header1"
-      "header2"
       "main"
-      "footer";
+      "footer1";
 
     grid-template-columns: 1fr;
   }
@@ -52,7 +50,7 @@
 
 .aside {
   grid-area: aside;
-  background-color: deeppink;
+  background-color: rgb(30, 214, 85);
 
   @media (max-width: 1200px) {
     display: none;
