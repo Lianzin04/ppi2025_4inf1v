@@ -32,7 +32,7 @@
     grid-template-areas:
       "header1"
       "main"
-      "footer1";
+      "footer";
 
     grid-template-columns: 1fr;
   }
@@ -41,20 +41,6 @@
 .header1 {
   grid-area: header1;
   background-color: darkslateblue;
-}
-
-.header2 {
-  grid-area: header2;
-  background-color: deepskyblue;
-}
-
-.aside {
-  grid-area: aside;
-  background-color: rgb(30, 214, 85);
-
-  @media (max-width: 1200px) {
-    display: none;
-  }
 }
 
 .footer {
