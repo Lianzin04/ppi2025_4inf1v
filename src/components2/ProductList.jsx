@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import styles from "./ProductList.module.css";
+import styles from "./Product.module.css";
 import { CircularProgress } from "@mui/material";
 
 export function ProductList() {
