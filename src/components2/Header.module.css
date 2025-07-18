@@ -1,0 +1,27 @@
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 3rem;
+  padding: 5rem;
+  background-color: var(--rosa);
+}
+.container h1 {
+  font-size: 5rem;
+  font-weight: bolder;
+}
+.containerImg img {
+  height: auto;
+  width: 100%;
+  max-width: 20rem;
+}
+
+.cartInfo {
+  border-radius: 3rem;
+  background-color: var(--preto);
+  color: var(--azu);
+  padding: 2rem;
+  font-size: 3rem;
+  font-weight: bold;
+  text-align: center;
+}

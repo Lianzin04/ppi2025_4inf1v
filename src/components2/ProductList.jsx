@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
-import styles from "./Product.module.css";
+import styles from "./ProductList.module.css";
 import { CircularProgress } from "@mui/material";
+import { Product } from "./Product";
 
-export function ProductList() {
+export function ProductList({ addToCart }) {
   var category = "smartphones";
   var limit = 10;
   var apiUrl = `https://dummyjson.com/products/category/${category}?limit=${limit}&select=id,thumbnail,title,price,description`;
@@ -29,19 +30,11 @@ export function ProductList() {
 
   return (
     <div className={styles.container}>
-      <h1>TJA Megastore</h1>
-      {products.map((product) => (
-        <div key={product.id} className={styles.productCard}>
-          <img
-            src={product.thumbnail}
-            alt={product.title}
-            className={styles.productImage}
-          />
-          <h2 className={styles.productTitle}>{product.title}</h2>
-          <p className={styles.productPrice}>Price: ${product.price}</p>
-          <p className={styles.productDescription}>{product.description}</p>
-        </div>
-      ))}
+      <div className={styles.productList}>
+        {products.map((product) => (
+          <Product key={product.id} product={product} addToCart={addToCart} />
+        ))}
+      </div>
       {loading && (
         <div>
           <CircularProgress
