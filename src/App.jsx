@@ -1,4 +1,4 @@
-import "./styles/theme.css"
+import "./styles/theme.css";
 import "./styles/global.css";
 import { ProductList } from "./components2/ProductList";
 import { Header } from "./components2/Header";

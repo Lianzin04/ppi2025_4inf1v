@@ -24,7 +24,6 @@ export function ProductList({ addToCart }) {
         setLoading(false);
       }
     }
-
     fetchProducts();
   }, []);
 

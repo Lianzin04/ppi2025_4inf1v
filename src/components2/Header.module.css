@@ -4,7 +4,7 @@
   justify-content: space-between;
   gap: 3rem;
   padding: 5rem;
-  background-color: var(--snow);
+  background-color: var(--roxo);
 }
 .container h1 {
   font-size: 5rem;
@@ -19,7 +19,7 @@
 .cartInfo {
   border-radius: 3rem;
   background-color: var(--preto);
-  color: var(--azu);
+  color: var(--roxo);
   padding: 2rem;
   font-size: 3rem;
   font-weight: bold;
@@ -28,5 +28,5 @@
 
 .link {
   text-decoration: none;
-  color: var(--azu);
+  color: var(--preto);
 }
