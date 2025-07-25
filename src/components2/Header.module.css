@@ -3,13 +3,22 @@
   align-items: center;
   justify-content: space-between;
   gap: 3rem;
+  height: 15rem;
   padding: 5rem;
   background-color: var(--roxo);
+
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
 }
+
 .container h1 {
   font-size: 5rem;
   font-weight: bolder;
 }
+
 .containerImg img {
   height: auto;
   width: 100%;
@@ -18,8 +27,8 @@
 
 .cartInfo {
   border-radius: 3rem;
-  background-color: var(--preto);
-  color: var(--roxo);
+  background-color: var(--pink);
+  color: var(--snow);
   padding: 2rem;
   font-size: 3rem;
   font-weight: bold;
@@ -28,5 +37,5 @@
 
 .link {
   text-decoration: none;
-  color: var(--preto);
+  color: var(--rosa);
 }

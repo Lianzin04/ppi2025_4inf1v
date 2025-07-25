@@ -1,126 +1,75 @@
 .cart {
-  padding: 2rem;
-  background-color: #fff;
-  border-radius: 1rem;
-  max-width: 900px;
-  margin: 2rem auto;
-  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  display: flex;
+  flex-direction: column;
+  gap: 5rem;
+  padding: 5rem;
+  margin: 15rem 0;
+  align-items: center;
 }
 
 .cart h2 {
-  font-size: 2.5rem;
-  margin-bottom: 2rem;
+  font-size: 4rem;
+  font-weight: bolder;
 }
 
-.clearButton {
-  background-color: red;
-  color: white;
-  padding: 1rem;
-  border: none;
-  border-radius: 0.5rem;
-  font-weight: bold;
-  cursor: pointer;
-  margin-bottom: 1.5rem;
-}
-
-.itemList {
-  list-style: none;
-  padding: 0;
-  margin: 0;
+.cart p {
+  font-size: 2rem;
+  color: var(--roxo);
 }
 
 .cartItem {
   display: flex;
-  gap: 2rem;
-  margin-bottom: 2rem;
-  border-bottom: 1px solid #ccc;
-  padding-bottom: 2rem;
+  align-items: center;
+  justify-content: space-between;
+  gap: 5rem;
+  padding: 2rem 5rem;
+  margin: 2rem;
+  border-radius: 1rem;
+  background-color: var(--snow);
+  color: var(--roxo);
 }
 
 .cartItem img {
-  width: 150px;
-  border-radius: 1rem;
+  width: 20rem;
+  height: auto;
 }
 
-.details {
-  flex: 1;
+.cartItem h3 {
+  font-size: 2rem;
+  flex-grow: 1;
 }
 
-.quantity {
+.cartItem p {
+  font-size: 2rem;
+}
+
+.cartItem button {
+  padding: 1rem 2rem;
+  font-size: 3rem;
+  background-color: var(--pink);
+  color: #111;
+  border: none;
+  border-radius: 0.5rem;
+  cursor: pointer;
+}
+
+.cartItem button:hover {
+  background-color: var(--preto);
+}
+
+.cartItem button:disabled {
+  background-color: var(--preto);
+  cursor: not-allowed;
+}
+
+.quantityControls {
   display: flex;
   align-items: center;
-  gap: 1rem;
-  margin-top: 0.5rem;
-}
-
-.quantity button {
-  font-size: 1.2rem;
-  padding: 0.5rem 1rem;
-}
-
-.containerCarrinho {
-  display: flex;
-  justify-content: center;
-  gap: 2rem;
-  align-items: flex-start;
-  padding: 2rem;
-  flex-wrap: wrap;
-}
-
-.resumo {
-  background-color: #fff;
-  padding: 2rem;
+  border: 0.25rem solid #111;
   border-radius: 1rem;
-  box-shadow: 0 0 10px rgba(0,0,0,0.1);
-  width: 300px;
-  height: fit-content;
 }
 
-.resumo h3 {
-  font-size: 1.8rem;
-  margin-bottom: 1rem;
-}
-
-.resumo p {
-  font-size: 1.2rem;
-  margin-bottom: 1rem;
-}
-
-.pix {
-  background-color: #e0ffe0;
-  padding: 1rem;
-  border-radius: 0.5rem;
-}
-
-.valorPix {
-  color: green;
-  font-weight: bold;
-}
-
-.economia {
-  color: #008000;
-  font-size: 0.95rem;
-}
-
-.botaoContinuar {
-  margin-top: 1rem;
-  width: 100%;
-  padding: 1rem;
-  background-color: orange;
-  color: white;
-  font-weight: bold;
-  border: none;
-  border-radius: 0.5rem;
-  cursor: pointer;
-}
-.botaoVoltar {
-  margin-top: 1rem;
-  width: 100%;
-  padding: 1rem;
-  background-color: #007bff;
-  color: white;
-  font-weight: bold;
-  border: none;
-  border-radius: 0.5rem;
-  cursor: pointer;
+.quantityControls span {
+  font-size: 2rem;
+  margin: 0 2rem;
 }
