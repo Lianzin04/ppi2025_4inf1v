@@ -1,13 +1,15 @@
 .productCard {
-  border: 0.25rem solid var(--rosae);
+  border: 0.25rem solid var(--primary);
   border-radius: 5rem;
   padding: 2rem;
   text-align: center;
-  background-color: var(--snow);
+  background-color: var(--gray-100);
+  /* width: 40rem; */
 }
 
 .productImage {
   width: 100%;
+  max-width: 30rem;
   border-radius: 0.5rem;
 }
 
@@ -19,7 +21,7 @@
 
 .productDescription {
   font-size: 2rem;
-  color: var(--preto);
+  color: var(--primary-dark);
 }
 
 .productPrice {
@@ -29,8 +31,8 @@
 }
 
 .productButton {
-  background-color: var(--pink);
-  color: var(--preto);
+  background-color: var(--primary);
+  color: var(--gray-900);
   border: none;
   padding: 1rem 2rem;
   border-radius: 1rem;
@@ -39,5 +41,5 @@
 }
 
 .productButton:hover {
-  background-color: var(--rosae);
+  background-color: var(--primary-dark);
 }

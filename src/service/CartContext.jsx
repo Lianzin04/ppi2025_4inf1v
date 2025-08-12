@@ -9,14 +9,15 @@ export const CartContext = createContext({
   cart: [],
   addToCart: () => {},
   updateQtyCart: () => {},
+  removeFromCart: () => {},
   clearCart: () => {},
 });
 
 export function CartProvider({ children }) {
   // State to manage products
-  const category = "smartphones";
-  const limit = 10;
-  const apiUrl = `https://dummyjson.com/products/category/${category}?limit=${limit}&select=id,thumbnail,title,price,description`;
+  var category = "smartphones";
+  var limit = 10;
+  var apiUrl = `https://dummyjson.com/products/category/${category}?limit=${limit}&select=id,thumbnail,title,price,description`;
 
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -44,10 +45,14 @@ export function CartProvider({ children }) {
     // Check if the product is already in the cart
     const existingProduct = cart.find((item) => item.id === product.id);
     if (existingProduct) {
-      updateQtyCart(product.id, (existingProduct.quantity || 1) + 1);
+      updateQtyCart(product.id, existingProduct.quantity + 1);
     } else {
-      setCart((prevCart) => [...prevCart, { ...product, quantity: 1 }]);
+      setCart((prevCart) => [...prevCart, {...product, quantity: 1}]);
     }
+  }
+
+  function removeFromCart(productId) {
+    setCart((prevCart) => prevCart.filter((item) => item.id !== productId));
   }
 
   function updateQtyCart(productId, quantity) {
@@ -69,6 +74,7 @@ export function CartProvider({ children }) {
     cart: cart,
     addToCart: addToCart,
     updateQtyCart: updateQtyCart,
+    removeFromCart: removeFromCart,
     clearCart: clearCart,
   };
 
