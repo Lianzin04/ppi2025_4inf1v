@@ -5,8 +5,8 @@
   gap: 3rem;
   height: 15rem;
   padding: 5rem;
-  background-color: var(--preto);
-
+  margin-bottom: 2rem;
+  background-color: var(--snow);
   position: fixed;
   top: 0;
   left: 0;
@@ -32,7 +32,7 @@
 .cartInfo {
   border-radius: 3rem;
   background-color: var(--preto);
-  color: var(--preto);
+  color: var(--snow);
   padding: 2rem;
   font-size: 3rem;
   font-weight: bold;
@@ -55,8 +55,8 @@
   right: -2rem;
   font-size: 1.5rem;
   border-radius: 1rem;
-  background-color: var(--preto);
-  color: var(--preto);
+  background-color: var(--azu);
+  color: var(--snow);
   padding: 0.2rem 0.6rem;
   font-weight: bold;
   z-index: 1;

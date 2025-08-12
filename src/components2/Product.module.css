@@ -1,0 +1,55 @@
+.productCard {
+  border: 0.25rem solid var(--pink);
+  border-radius: 2rem;
+  padding: 2rem;
+  text-align: center;
+  align-items: space-between;
+  background-color: var(--snow);
+  transition: transform 0.3s ease; 
+  /* width: 40rem; */
+}
+
+.productCard:hover {
+  transform: scale(1.05);
+
+}
+
+
+.productImage {
+  width: 100%;
+  max-width: 400px;
+  border-radius: 0.5rem;
+}
+
+.productTitle {
+  font-size: 3rem;
+  font-weight: bold;
+  margin: 0.5rem 0;
+}
+
+.productDescription {
+  font-size: 2rem;
+  color: var(--preto);
+  height: 180px;
+}
+
+.productPrice {
+  font-size: 2rem;
+  font-weight: bold;
+  margin: 2rem 0;
+}
+
+.productButton {
+  background-color: var(--pink);
+  color: var(--snow);
+  font-weight: bold;
+  border: none;
+  padding: 2rem 2rem;
+  border-radius: 1rem;
+  cursor: pointer;
+  font-size: 2rem;
+}
+
+.productButton:hover {
+  background-color: var(--rosae);
+}

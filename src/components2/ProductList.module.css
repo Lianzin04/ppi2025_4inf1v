@@ -31,12 +31,12 @@
   justify-content: center;
   padding: 1rem;
   font-size: 2rem;
-  border: 0.25rem solid var(--preto);
+  border: 0.25rem solid var(--azu);
   border-radius: 1rem;
 }
 
 .searchButton {
-  background-color: var(--preto);
+  background-color: var(--snow);
   color: var(--preto);
   border: none;
   padding: 1rem 2rem;
@@ -44,9 +44,9 @@
   cursor: pointer;
   font-size: 2rem;
   font-weight: bold;
-  border: 0.25rem solid var(--preto);
+  border: 0.25rem solid var(--onyx);
 }
 
 .searchButton:hover {
-  background-color: var(--preto);
+  background-color: var(--onyx);
 }
