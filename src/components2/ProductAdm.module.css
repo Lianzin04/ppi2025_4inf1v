@@ -1,0 +1,67 @@
+.admContainer {
+  max-width: 80rem;
+  margin: 20rem auto;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
+}
+
+.admContainer h2 {
+  font-size: 4rem;
+  text-align: center;
+  font-weight: bolder;
+  color: var(--preto);
+}
+
+.section {
+  background-color: var(--snow);
+  padding: 3rem;
+  border-radius: 1.5rem;
+  border: 0.25rem solid var(--onyx);
+}
+
+.section h3 {
+  font-size: 2.5rem;
+  margin-bottom: 2rem;
+  color: var(--roxo);
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.input {
+  padding: 1rem;
+  font-size: 1.8rem;
+  border: 0.25rem solid var(--azu);
+  border-radius: 1rem;
+  resize: vertical;
+  min-height: 4rem;
+}
+
+.button {
+  background-color: var(--pink);
+  color: var(--snow);
+  font-weight: bold;
+  border: none;
+  padding: 1.5rem;
+  border-radius: 1rem;
+  cursor: pointer;
+  font-size: 2rem;
+  transition: background-color 0.3s ease;
+}
+
+.button:hover {
+  background-color: var(--rosae);
+}
+
+.removeButton {
+  background-color: var(--rosae);
+}
+
+.removeButton:hover {
+  background-color: #e55c7b;
+}

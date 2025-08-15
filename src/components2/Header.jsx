@@ -1,6 +1,6 @@
 import styles from "./Header.module.css";
-import { ShoppingBasket } from "lucide-react";
-import { Link } from "react-router";
+import { ShoppingBasket, User, Shield } from "lucide-react";
+import { Link } from "react-router-dom";
 import { useContext } from "react";
 import { CartContext } from "../service/CartContext";
 
@@ -12,6 +12,18 @@ export function Header() {
       <Link to="/" className={styles.link}>
         <h1>TJA Megastore</h1>
       </Link>
+
+      <nav className={styles.navLinks}>
+        <Link to="/login" className={styles.navLinkItem}>
+          <User />
+          <span>Login</span>
+        </Link>
+        <Link to="/adm/products" className={styles.navLinkItem}>
+           <Shield />
+           <span>Adm</span>
+        </Link>
+      </nav>
+
       <Link to="/cart" className={styles.link}>
         <div className={styles.cartInfo}>
           <div className={styles.cartIcon}>
@@ -22,7 +34,6 @@ export function Header() {
               </span>
             )}
           </div>
-
           <p>
             Total: ${" "}
             {cart

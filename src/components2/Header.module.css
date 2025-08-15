@@ -61,3 +61,26 @@
   font-weight: bold;
   z-index: 1;
 }
+
+.navLinks {
+  display: flex;
+  gap: 3rem;
+  align-items: center;
+}
+
+.navLinkItem {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  font-size: 2rem;
+  font-weight: bold;
+  color: var(--preto);
+  text-decoration: none;
+  padding: 1rem 1.5rem;
+  border-radius: 1rem;
+  transition: background-color 0.3s;
+}
+
+.navLinkItem:hover {
+  background-color: var(--onyx);
+}
