@@ -22,13 +22,13 @@ export function Register() {
           <label htmlFor="confirmPassword">Confirmar Senha</label>
           <input type="password" id="confirmPassword" className={styles.input} placeholder="Repita a senha" />
         </div>
-        <button type="submit" className={styles.button}>
+         <Link to="/" className={styles.button}>
           Cadastrar
-        </button>
+         </Link>
         <p className={styles.linkText}>
           Já tem uma conta? <Link to="/login">Faça login</Link>
         </p>
       </form>
-    </div>
+      </div>
   );
 }

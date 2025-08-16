@@ -11,19 +11,18 @@ import { ProductAdm } from "./components2/ProductAdm";
 
 export default function App() {
   return (
-    <>
-      <CartProvider>
-        <Header />
-        <Routes>
-          <Route path="/ProductList" element={<ProductList />} />
-          <Route path="/cart" element={<Cart />} />
-           {}
-          <Route path="/login" element={<Login />} />
-          <Route path="/register" element={<Register />} />
-          <Route path="/adm/products" element={<ProductAdm />} />
+      <>
+            <CartProvider>
+                    <Header />
+                            <Routes>
+                                      <Route path="/" element={<ProductList />} />
+                                                <Route path="/cart" element={<Cart />} />
+                                                          <Route path="/login" element={<Login />} />
+                                                                    <Route path="/register" element={<Register />} />
+                                                                              <Route path="/adm/products" element={<ProductAdm />} />
 
-        </Routes>
-      </CartProvider>
-    </>
-  );
-}
+                                                                                      </Routes>
+                                                                                            </CartProvider>
+                                                                                                </>
+                                                                                                  );
+                                                                                                  }
