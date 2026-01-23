@@ -1,63 +1,42 @@
-.container {
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 5%; /* Padding reduzido */
+  background: var(--bg-header);
+  backdrop-filter: blur(8px);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  height: 60px; /* Altura fixa para controle */
+  border-bottom: 1px solid rgba(0,0,0,0.05);
+}
+
+.logoText {
+  font-size: 1.6rem; /* Antes estava 2.0+ */
+  font-weight: 600;
+  letter-spacing: -0.5px;
+}
+
+.navLinks {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  gap: 3rem;
-  height: 15rem;
-  padding: 5rem;
-  background-color: var(--primary-dark);
-
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  z-index: 1000;
+  gap: 2.5rem;
 }
 
-.container h1 {
-  font-size: 5rem;
-  font-weight: bolder;
-}
-
-.containerImg img {
-  height: auto;
-  width: 100%;
-  max-width: 20rem;
-}
-
-.container p {
-  font-size: 1.5rem;
-}
-
-.cartInfo {
-  border-radius: 3rem;
-  background-color: var(--primary-light);
-  color: var(--primary-contrast-dark);
-  padding: 2rem;
-  font-size: 3rem;
-  font-weight: bold;
-  text-align: center;
-}
-
-.link {
+.navLinks a {
+  font-size: 1.3rem;
+  color: var(--text-light);
   text-decoration: none;
-  color: var(--primary);
+  transition: color 0.2s;
 }
 
-.cartIcon {
-  position: relative;
-  display: inline-block;
-}
-
-.cartCount {
-  position: absolute;
-  top: -0.8rem;
-  right: -2rem;
-  font-size: 1.5rem;
-  border-radius: 1rem;
-  background-color: var(--primary-dark);
-  color: var(--gray-100);
-  padding: 0.2rem 0.6rem;
-  font-weight: bold;
-  z-index: 1;
+.addBtn {
+  background-color: var(--accent);
+  padding: 0.7rem 1.4rem; /* Botão mais delicado */
+  font-size: 1.25rem;
+  border-radius: 0.8rem;
+  border: none;
+  color: white;
+  cursor: pointer;
 }

@@ -1,68 +1,50 @@
 import styles from "./ProductList.module.css";
-import { CircularProgress } from "@mui/material";
 import { Product } from "./Product";
-import { useState, useContext, useEffect, useRef } from "react";
-import { CartContext } from "../service/CartContext";
+import { Hero } from "./Hero";
+import { useContext, useEffect } from "react";
+import { CartContext } from "../context/CartContext";
+import { Moon, Sun } from "lucide-react";
 
-export function ProductList() {
-  
-  const { products, loading, error } = useContext(CartContext);
-
-  const [filteredProducts, setFilteredProducts] = useState([]);
-
-  const searchInput = useRef(null);
+export function ProductList({ isDark, setIsDark }) {
+  const { products, loading } = useContext(CartContext);
 
   useEffect(() => {
-    if(products) {
-      setFilteredProducts(products);
-    }
-  }, [products]);
-
-  function handleSearch() {
-    const query = searchInput.current.value.toLowerCase();
-    setFilteredProducts(
-      products.filter((product) =>
-        product.title.toLowerCase().includes(query) || 
-        product.description.toLowerCase().includes(query)
-      )
-    );
-  }
-
-  function handleClear() {
-    searchInput.current.value = "";
-    setFilteredProducts(products);
-  }
+    document.documentElement.setAttribute("data-theme", isDark ? "dark" : "light");
+  }, [isDark]);
 
   return (
-    <div className={styles.container}>
-      <div className={styles.searchContainer}>
-        <input
-          ref={searchInput}
-          type="text"
-          placeholder="Search products..."
-          className={styles.searchInput}
-          onChange={handleSearch}
-        />
-        <button className={styles.searchButton} onClick={handleClear}>
-          CLEAR
-        </button>
-      </div>
-      <div className={styles.productList}>
-        {filteredProducts.map((product) => (
-          <Product key={product.id} product={product} />
-        ))}
-      </div>
-      {loading && (
-        <div>
-          <CircularProgress
-            thickness={5}
-            style={{ margin: "2rem auto", display: "block" }}
-            sx={{ color: "#001111" }}
-          />
-          <p>Loading products...</p>
+    <div className={styles.pageWrapper}>
+      <main className={styles.contentContainer}>
+        
+        <div className={styles.toolbar}>
+          <div className={styles.filterPills}>
+            <button className={styles.pill}>Preciso de coragem</button>
+            <button className={styles.pill}>Preciso de calma</button>
+          </div>
+
+          <div className={styles.themeToggle}>
+            {/* REQUISITO 3: Ícone muda no switch conforme o tema */}
+            {isDark ? <Moon size={18} /> : <Sun size={18} />}
+            <span>{isDark ? "Modo Noturno" : "Modo Claro"}</span>
+            <label className={styles.switch}>
+              <input type="checkbox" checked={isDark} onChange={() => setIsDark(!isDark)} />
+              <span className={styles.slider}></span>
+            </label>
+          </div>
         </div>
-      )}
-      {error && <p>Error loading products: {error.message} ❌</p>}
+
+        {/* REQUISITO 1: Hero em camada superior (Sticky) */}
+        <div className={styles.heroLayer}>
+          <Hero />
+        </div>
+
+        {/* REQUISITO 1: Grid em camada inferior (Passa por trás) */}
+        <div className={styles.gridLayer}>
+          {!loading && products && products.map((product) => (
+            <Product key={product.id} product={product} />
+          ))}
+        </div>
+      </main>
     </div>
   );
 }

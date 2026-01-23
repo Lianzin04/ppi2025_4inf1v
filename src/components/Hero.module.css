@@ -1,0 +1,21 @@
+.heroContainer {
+  width: 100%;
+  max-width: 900px; /* Limita a largura para não espalhar na tela toda */
+  margin: 3rem auto; /* Centraliza */
+}
+
+.heroCard {
+  background: var(--hero-grad);
+  border-radius: 2rem;
+  padding: 5rem 3rem; /* Reduzido de 8rem */
+  text-align: center;
+  box-shadow: 0 10px 30px rgba(165, 180, 252, 0.15);
+}
+
+.quote {
+  font-family: 'Georgia', serif;
+  font-size: 2.2rem; /* Antes estava 3.2rem (muito grande) */
+  line-height: 1.3;
+  color: white;
+  font-style: italic;
+}

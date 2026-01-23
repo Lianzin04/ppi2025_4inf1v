@@ -1,39 +1,26 @@
 import styles from "./Header.module.css";
-import { ShoppingBasket } from "lucide-react";
-import { Link } from "react-router";
-import { useContext } from "react";
-import { CartContext } from "../service/CartContext";
+import { Sun, Moon, Plus } from "lucide-react";
 
-export function Header() {
-  const { cart } = useContext(CartContext);
-
+export function Header({ isDark }) {
   return (
-    <div className={styles.container}>
-      <Link to="/" className={styles.link}>
-        <h1>TJA Megastore</h1>
-      </Link>
-      <Link to="/cart" className={styles.link}>
-        <div className={styles.cartInfo}>
-          <div className={styles.cartIcon}>
-            <ShoppingBasket size={32} />
-            {cart.length > 0 && (
-              <span className={styles.cartCount}>
-                {cart.reduce((total, item) => total + item.quantity, 0)}
-              </span>
-            )}
-          </div>
-
-          <p>
-            Total: ${" "}
-            {cart
-              .reduce(
-                (total, product) => total + product.price * product.quantity,
-                0
-              )
-              .toFixed(2)}
-          </p>
-        </div>
-      </Link>
-    </div>
+    <header className={styles.header}>
+      <div className={styles.logoArea}>
+        {/* REQUISITO 3: Ícone muda no título conforme o tema */}
+        {isDark ? (
+          <Moon size={24} className={styles.moonIcon} color="#818cf8" />
+        ) : (
+          <Sun size={24} className={styles.sunIcon} color="#94a3b8" />
+        )}
+        <span className={styles.logoText}>Ponto de Luz</span>
+      </div>
+     
+      <nav className={styles.navLinks}>
+        <a href="#">Explorar</a>
+        <a href="#">Minhas Favoritas</a>
+        <button className={styles.addBtn}>
+          <Plus size={18} /> Deixar Mensagem
+        </button>
+      </nav>
+    </header>
   );
 }
