@@ -1,31 +1,22 @@
 import styles from "./Product.module.css";
-import { useContext } from "react";
-import { CartContext } from "../context/CartContext";
-import { Link } from "react-router";
+import { Heart, Star } from "lucide-react";
 
 export function Product({ product }) {
-  const { addToCart } = useContext(CartContext);
-
   return (
-    <div key={product.id} className={styles.productCard}>
-      <img
-        src={product.thumbnail}
-        alt={product.title}
-        className={styles.productImage}
-      />
-      <h2 className={styles.productTitle}>{product.title}</h2>
-      <p className={styles.productDescription}>{product.description}</p>
-      <p className={styles.productPrice}>${product.price}</p>
-      {/* <Link to="/cart"> */}
-      <button
-        onClick={() => {
-          addToCart(product);
-        }}
-        className={styles.productButton}
-      >
-        ADD TO CART
-      </button>
-      {/* </Link> */}
+    <div className={styles.productCard}>
+      <span className={styles.categoryTag}>{product.title}</span>
+      <p className={styles.messageText}>{product.description}</p>
+      
+      <div className={styles.cardFooter}>
+        <div className={styles.likes}>
+          <Heart size={18} fill="#a5b4fc" color="#a5b4fc" />
+          <Heart size={18} color="#a5b4fc" />
+          <span>12</span>
+        </div>
+        <button className={styles.saveBtn}>
+          <Star size={18} /> Salvar
+        </button>
+      </div>
     </div>
   );
 }

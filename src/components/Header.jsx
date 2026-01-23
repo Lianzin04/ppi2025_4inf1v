@@ -1,26 +1,40 @@
 import styles from "./Header.module.css";
 import { Sun, Moon, Plus } from "lucide-react";
+import { useState } from "react";
 
-export function Header({ isDark }) {
+export function Header() {
+  const [dark, setDark] = useState(false);
+
+  const toggleTheme = () => {
+    setDark(!dark);
+    document.documentElement.setAttribute("data-theme", !dark ? "dark" : "light");
+  };
+
   return (
     <header className={styles.header}>
-      <div className={styles.logoArea}>
-        {/* REQUISITO 3: Ícone muda no título conforme o tema */}
-        {isDark ? (
-          <Moon size={24} className={styles.moonIcon} color="#818cf8" />
-        ) : (
-          <Sun size={24} className={styles.sunIcon} color="#94a3b8" />
-        )}
-        <span className={styles.logoText}>Ponto de Luz</span>
+      <div className={styles.topBar}>
+        <div className={styles.logo}>
+          <Sun size={24} /> <span>Ponto de Luz</span>
+        </div>
+        <nav className={styles.nav}>
+          <span>Explorar</span>
+          <span>Minhas Favoritas</span>
+          <button className={styles.addBtn}><Plus size={16}/> Deixar Mensagem</button>
+        </nav>
       </div>
-     
-      <nav className={styles.navLinks}>
-        <a href="#">Explorar</a>
-        <a href="#">Minhas Favoritas</a>
-        <button className={styles.addBtn}>
-          <Plus size={18} /> Deixar Mensagem
-        </button>
-      </nav>
+      
+      <div className={styles.filterBar}>
+        <div className={styles.pills}>
+          <span className={styles.activePill}>Preciso de coragem</span>
+          <span>Preciso de calma</span>
+          <span>Quero refletir</span>
+        </div>
+        <div className={styles.themeToggle}>
+          <Moon size={18} />
+          <span>Modo Noturno</span>
+          <input type="checkbox" onChange={toggleTheme} />
+        </div>
+      </div>
     </header>
   );
 }

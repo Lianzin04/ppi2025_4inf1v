@@ -4,9 +4,9 @@ export function Hero() {
   return (
     <section className={styles.heroContainer}>
       <div className={styles.heroCard}>
-        <h2 className={styles.quote}>
+        <p className={styles.quote}>
           “O que você diria para si mesmo se soubesse que não pode falhar?”
-        </h2>
+        </p>
       </div>
     </section>
   );
