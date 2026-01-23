@@ -1,25 +1,23 @@
 :root {
-  /* Modo Claro */
-  --bg-body: #e0e7ff;
-  --bg-card: rgba(255, 255, 255, 0.8);
-  --bg-header: #ffffff;
-  --text-main: #2d3436;
-  --text-secondary: #636e72;
-  --accent: #7d9df2;
-  --accent-hover: #5a7fdf;
-  --gradient-card: linear-gradient(135deg, #a5b4fc, #818cf8);
-  --shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.1);
+  /* Modo Claro - Azul Pastel */
+  --bg-body: #eef2ff;
+  --bg-card: rgba(255, 255, 255, 0.7); 
+  --bg-header: rgba(255, 255, 255, 0.8);
+  --glass-border: rgba(255, 255, 255, 0.4);
+  --text-main: #1e293b;
+  --text-light: #64748b;
+  --accent: #818cf8;
+  --shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.07);
 }
 
 [data-theme="dark"] {
-  /* Modo Noturno */
-  --bg-body: #1a233a;
-  --bg-card: rgba(255, 255, 255, 0.05);
-  --bg-header: #1e293b;
-  --text-main: #f8fafc;
-  --text-secondary: #cbd5e1;
-  --accent: #4fd1c5;
-  --accent-hover: #38b2ac;
-  --gradient-card: linear-gradient(135deg, #6366f1, #4338ca);
-  --shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+  /* Modo Noturno - Azul Profundo e Roxo */
+  --bg-body: #0f172a; /* Azul marinho muito escuro */
+  --bg-card: rgba(30, 41, 59, 0.5); /* Azul slate translúcido */
+  --bg-header: rgba(15, 23, 42, 0.8);
+  --glass-border: rgba(255, 255, 255, 0.1);
+  --text-main: #f1f5f9;
+  --text-light: #94a3b8;
+  --accent: #a78bfa; /* Roxo brilhante */
+  --shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.4);
 }

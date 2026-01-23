@@ -1,26 +1,41 @@
+import { useState, useEffect } from "react";
+import { Route, Routes } from "react-router";
+import { CartProvider } from "./context/CartContext";
+
+// Importação de Estilos
 import "./styles/theme.css";
 import "./styles/global.css";
-import { ProductList } from "./components/ProductList";
+
+// Importação de Componentes
 import { Header } from "./components/Header";
-import { Route, Routes } from "react-router";
+import { ProductList } from "./components/ProductList";
 import { Cart } from "./components/Cart";
-import { CartProvider } from "./context/CartContext";
-import { useState } from "react";
 
 export default function App() {
+  // Estado global do tema para evitar conflitos e tela branca
   const [isDark, setIsDark] = useState(false);
+
+  // Efeito para aplicar o atributo de tema no HTML sempre que isDark mudar
+  useEffect(() => {
+    document.documentElement.setAttribute("data-theme", isDark ? "dark" : "light");
+  }, [isDark]);
 
   return (
     <CartProvider>
-      {/* Passamos o isDark para o Header mudar o ícone do título */}
-      <Header isDark={isDark} />
-      <Routes>
-        <Route 
-          path="/" 
-          element={<ProductList isDark={isDark} setIsDark={setIsDark} />} 
-        />
-        <Route path="/cart" element={<Cart />} />
-      </Routes>
+      <div className="app-container">
+        {/* Passamos o estado e a função para o Header */}
+        <Header isDark={isDark} setIsDark={setIsDark} />
+        
+        <Routes>
+          <Route
+            path="/"
+            element={
+              <ProductList isDark={isDark} setIsDark={setIsDark} />
+            }
+          />
+          <Route path="/cart" element={<Cart />} />
+        </Routes>
+      </div>
     </CartProvider>
   );
 }

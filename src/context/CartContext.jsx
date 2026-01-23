@@ -1,84 +1,100 @@
 import { useState, useEffect, createContext } from "react";
+import { supabase } from "../utils/supabase"; 
 
 export const CartContext = createContext({
-  // Context to manage the products state
   products: [],
   loading: false,
   error: null,
-  // Context to manage the cart state
-  cart: [],
-  addToCart: () => {},
-  updateQtyCart: () => {},
-  removeFromCart: () => {},
-  clearCart: () => {},
+  addMessage: () => {},
+  deleteMessage: () => {},
+  updateMessage: () => {},
 });
 
 export function CartProvider({ children }) {
-  // State to manage products
-  var category = "smartphones";
-  var limit = 10;
-  var apiUrl = `https://dummyjson.com/products/category/${category}?limit=${limit}&select=id,thumbnail,title,price,description`;
-
-  const [products, setProducts] = useState([]);
+  const [products, setProducts] = useState([]); 
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  useEffect(() => {
-    async function fetchProducts() {
-      try {
-        const response = await fetch(apiUrl);
-        const data = await response.json();
-        setProducts(data.products);
-      } catch (error) {
-        setError(error);
-      } finally {
-        setLoading(false);
-      }
+  // 1. READ: Buscar mensagens do Supabase
+  async function fetchMessages() {
+    setLoading(true);
+    try {
+      const { data, error } = await supabase
+        .from("messages")
+        .select("*")
+        .order("created_at", { ascending: false });
+
+      if (error) throw error;
+      setProducts(data);
+    } catch (err) {
+      setError(err.message);
+      console.error("Erro ao buscar mensagens:", err.message);
+    } finally {
+      setLoading(false);
     }
-    fetchProducts();
+  }
+
+  useEffect(() => {
+    fetchMessages();
   }, []);
 
-  // State to manage the cart
-  const [cart, setCart] = useState([]);
-
-  function addToCart(product) {
-    // Check if the product is already in the cart
-    const existingProduct = cart.find((item) => item.id === product.id);
-    if (existingProduct) {
-      updateQtyCart(product.id, existingProduct.quantity + 1);
-    } else {
-      setCart((prevCart) => [...prevCart, {...product, quantity: 1}]);
+  // 2. CREATE: Adicionar nova mensagem
+  async function addMessage(content, author) {
+    try {
+      const { error } = await supabase
+        .from("messages")
+        .insert([{ content, author: author || "Anônimo" }]);
+      
+      if (error) throw error;
+      await fetchMessages(); // Recarrega a lista para mostrar a nova mensagem
+    } catch (err) {
+      console.error("Erro ao adicionar:", err.message);
     }
   }
 
-  function removeFromCart(productId) {
-    setCart((prevCart) => prevCart.filter((item) => item.id !== productId));
+  // 3. DELETE: Remover mensagem por ID
+  async function deleteMessage(id) {
+    try {
+      const { error } = await supabase
+        .from("messages")
+        .delete()
+        .eq("id", id);
+
+      if (error) throw error;
+      // Atualiza o estado local para remover o card instantaneamente
+      setProducts((prev) => prev.filter((msg) => msg.id !== id));
+    } catch (err) {
+      console.error("Erro ao deletar:", err.message);
+    }
   }
 
-  function updateQtyCart(productId, quantity) {
-    setCart((prevCart) =>
-      prevCart.map((item) =>
-        item.id === productId ? { ...item, quantity: quantity } : item
-      )
-    );
-  }
-
-  function clearCart() {
-    setCart([]);
+  // 4. UPDATE: Editar conteúdo da mensagem
+  async function updateMessage(id, newContent) {
+    try {
+      const { error } = await supabase
+        .from("messages")
+        .update({ content: newContent })
+        .eq("id", id);
+      
+      if (error) throw error;
+      await fetchMessages(); // Recarrega para refletir a edição
+    } catch (err) {
+      console.error("Erro ao atualizar:", err.message);
+    }
   }
 
   const context = {
-    products: products,
-    loading: loading,
-    error: error,
-    cart: cart,
-    addToCart: addToCart,
-    updateQtyCart: updateQtyCart,
-    removeFromCart: removeFromCart,
-    clearCart: clearCart,
+    products, // Mantemos o nome 'products' para não quebrar seu .map no ProductList
+    loading,
+    error,
+    addMessage,
+    deleteMessage,
+    updateMessage,
   };
 
   return (
-    <CartContext.Provider value={context}>{children}</CartContext.Provider>
+    <CartContext.Provider value={context}>
+      {children}
+    </CartContext.Provider>
   );
 }

@@ -1,52 +1,84 @@
 .header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 1rem 5%; /* Padding reduzido */
-  background: var(--bg-header);
-  backdrop-filter: blur(8px);
-  position: sticky;
+  position: fixed;
   top: 0;
+  left: 0;
+  width: 100%;
+  height: 70px;
+  display: flex;
+  justify-content: space-between; /* Espalha os 3 blocos: logo, nav e tema */
+  align-items: center;
+  padding: 0 5%;
+  background: var(--bg-header);
+  backdrop-filter: blur(10px);
   z-index: 1000;
-  height: 60px; /* Altura fixa para controle */
   border-bottom: 1px solid rgba(0,0,0,0.05);
 }
 
-.logoText {
-  font-size: 1.6rem; /* Antes estava 2.0+ */
-  font-weight: 600;
-  letter-spacing: -0.5px;
-}
-
-.navLinks {
+.logo {
   display: flex;
   align-items: center;
-  gap: 2.5rem;
+  gap: 1rem;
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: var(--text-main);
 }
 
-.navLinks a {
-  font-size: 1.3rem;
-  color: var(--text-light);
-  text-decoration: none;
+.nav {
+  display: flex;
+  align-items: center;
+  gap: 3rem; /* Espaço entre os links */
+}
+
+.navLink {
+  font-size: 1.4rem;
+  color: var(--text-secondary);
+  cursor: pointer;
   transition: color 0.2s;
+}
+
+.navLink:hover {
+  color: var(--accent);
 }
 
 .addBtn {
   background-color: var(--accent);
-  padding: 0.7rem 1.4rem; /* Botão mais delicado */
-  font-size: 1.25rem;
-  border-radius: 0.8rem;
-  border: none;
   color: white;
+  padding: 0.8rem 1.6rem;
+  border-radius: 12px;
+  border: none;
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  font-weight: 600;
   cursor: pointer;
+  box-shadow: 0 4px 12px rgba(129, 140, 248, 0.2);
+}
+
+.themeToggle {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  font-size: 1.3rem;
+  cursor: pointer;
+  color: var(--text-secondary);
+  padding: 0.5rem 1rem;
+  border-radius: 10px;
+  transition: background 0.2s;
+}
+
+.themeToggle:hover {
+  background: rgba(0,0,0,0.05);
 }
 .header {
+  height: 60px; /* Header mais fino */
+  padding: 0 5%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(10px);
   position: fixed;
   top: 0;
   width: 100%;
-  background: rgba(255, 255, 255, 0.8);
-  backdrop-filter: blur(10px);
   z-index: 1000;
-  border-bottom: 1px solid rgba(255,255,255,0.3);
-  padding: 2rem 5rem;
 }

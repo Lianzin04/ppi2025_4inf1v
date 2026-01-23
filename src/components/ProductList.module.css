@@ -1,36 +1,18 @@
 .contentContainer {
-  max-width: 1100px; /* Área de conteúdo controlada */
+  max-width: 1100px;
   margin: 0 auto;
-  padding: 0 2rem;
+  padding-top: 80px; /* Espaço para o Header */
 }
 
-.toolbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin: 2rem 0;
-}
-
-.pill {
-  font-size: 1.2rem; /* Fonte pequena e elegante */
-  padding: 0.6rem 1.2rem;
-  color: var(--text-light);
-  background: transparent;
-  border: none;
-  cursor: pointer;
-}
-
-.activePill {
-  background: white;
-  border-radius: 1rem;
-  color: var(--text-main);
-  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+.heroLayer {
+  margin-top: 0;
+  margin-bottom: 5rem;
+  width: 100%;
 }
 
 .gridLayer {
   display: grid;
-  /* Garante que os cards não fiquem gigantes individualmente */
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); 
-  gap: 2rem;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); 
+  gap: 2.5rem;
   padding-bottom: 5rem;
 }
