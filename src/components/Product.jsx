@@ -1,14 +1,15 @@
 import styles from "./Product.module.css";
-import { Heart, Bookmark } from "lucide-react"; // Bookmark faz mais sentido para salvar frases
-import { useState } from "react";
 
 export function Product({ product }) {
-  const [liked, setLiked] = useState(false);
-
   return (
     <div className={styles.productCard}>
       <span className={styles.categoryTag}>Mentalidade</span>
-      <p className={styles.messageText}>"{product.description}"</p>
+      {/* Alterado de .description para .content para bater com seu SQL */}
+      <p className={styles.messageText}>"{product.content}"</p>
+      
+      <div className={styles.cardFooter}>
+         <small>Por: {product.author}</small>
+      </div>
     </div>
   );
 }
