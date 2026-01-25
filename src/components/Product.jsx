@@ -24,12 +24,12 @@ export function Product({ product, onDelete, onUpdate }) {
     setIsEditing(false);
   };
 
-  // FUNÇÃO PARA AJUSTAR O TAMANHO DA FONTE DINAMICAMENTE
+  // LÓGICA DE FONTE MAIS AGRESSIVA
   const getTextClass = (text) => {
     const length = text.length;
-    if (length > 120) return styles.extraSmall; // Texto muito longo
-    if (length > 60) return styles.small;       // Texto médio
-    return "";                                  // Texto curto
+    if (length > 100) return styles.extraSmall; 
+    if (length > 50) return styles.small;       
+    return "";                                  
   };
 
   return (
@@ -53,21 +53,20 @@ export function Product({ product, onDelete, onUpdate }) {
         </div>
       ) : (
         <>
-          {/* APLICAÇÃO DA CLASSE DINÂMICA AQUI */}
           <p className={`${styles.messageText} ${getTextClass(product.content)}`}>
             "{product.content}"
           </p>
           
           <div className={styles.cardFooter}>
-            <small>Por: {product.author}</small>
+            <small className={styles.authorName}>Por: {product.author}</small>
             
             {isOwner && (
               <div className={styles.actions}>
                 <button className={styles.editBtn} onClick={() => setIsEditing(true)}>
-                  <Pencil size={18} />
+                  <Pencil size={16} />
                 </button>
                 <button className={styles.deleteBtn} onClick={() => onDelete(product.id)}>
-                  <Trash2 size={18} />
+                  <Trash2 size={16} />
                 </button>
               </div>
             )}
