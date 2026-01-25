@@ -1,23 +1,23 @@
 :root {
-  /* Modo Claro - Azul Pastel */
-  --bg-body: #eef2ff;
-  --bg-card: rgba(255, 255, 255, 0.7); 
-  --bg-header: rgba(255, 255, 255, 0.8);
-  --glass-border: rgba(255, 255, 255, 0.4);
-  --text-main: #1e293b;
-  --text-light: #64748b;
-  --accent: #818cf8;
-  --shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.07);
+  /* MODO CLARO - Roxo Pastel (Inspirado nas imagens) */
+  --bg-body: #f3f0ff;
+  --bg-card: rgba(255, 255, 255, 0.8);
+  --bg-header: rgba(255, 255, 255, 0.9);
+  --glass-border: rgba(167, 139, 250, 0.3);
+  --text-main: #1e1b4b;
+  --text-secondary: #6366f1; /* Roxo para o autor no modo claro */
+  --accent: #a78bfa; 
+  --shadow: 0 8px 32px 0 rgba(167, 139, 250, 0.15);
 }
 
 [data-theme="dark"] {
-  /* Modo Noturno - Azul Profundo e Roxo */
-  --bg-body: #0f172a; /* Azul marinho muito escuro */
-  --bg-card: rgba(30, 41, 59, 0.5); /* Azul slate translúcido */
-  --bg-header: rgba(15, 23, 42, 0.8);
+  /* MODO NOTURNO - Marinho, Roxo e Verde Água Claro */
+  --bg-body: #0f172a;
+  --bg-card: rgba(30, 41, 59, 0.5);
+  --bg-header: rgba(15, 23, 42, 0.9);
   --glass-border: rgba(255, 255, 255, 0.1);
   --text-main: #f1f5f9;
-  --text-light: #94a3b8;
-  --accent: #a78bfa; /* Roxo brilhante */
+  --text-secondary: #ffffff; /* Nome do autor branco conforme solicitado */
+  --accent: #73a1e8; /* VERDE ÁGUA MAIS CLARO (Mint/Teal light) */
   --shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.4);
 }
