@@ -16,32 +16,69 @@
   text-align: center;
 }
 
-.card h2 { margin-bottom: 2rem; color: var(--text-main); }
+.card h2 { margin-bottom: 1rem; color: var(--text-main); }
+
+/* Ponto 1: Estilo da frase de login aumentada */
+.welcomeText {
+  font-size: 1.2rem;
+  color: #818cf8;
+  font-weight: 600;
+  margin-bottom: 2rem;
+  line-height: 1.4;
+}
 
 .card form { display: flex; flex-direction: column; gap: 1.2rem; }
 
+/* Ponto 4: Wrapper da senha e botão do olho */
+.passwordWrapper {
+  position: relative;
+  width: 100%;
+}
+
+.passwordWrapper input {
+  width: 100%;
+}
+
+.eyeBtn {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--text-secondary);
+  display: flex;
+  align-items: center;
+}
+
 .card input {
-  padding: 1rem;
+  padding: 1.2rem;
   border-radius: 10px;
   border: 1px solid var(--glass-border);
   background: rgba(255,255,255,0.05);
   color: var(--text-main);
+  font-size: 1.4rem;
+  outline: none;
 }
 
 .btnPrimary {
   background: #818cf8;
   color: white;
   border: none;
-  padding: 1rem;
+  padding: 1.2rem;
   border-radius: 10px;
-  font-weight: 600;
+  font-weight: 700;
+  font-size: 1.5rem;
   cursor: pointer;
 }
 
+/* Ponto 3: Switch aumentado */
 .switch {
-  margin-top: 1.5rem;
-  font-size: 0.9rem;
-  color: var(--text-secondary);
+  margin-top: 2rem;
+  font-size: 1.2rem; /* Aumentado */
+  color: #818cf8;
+  font-weight: 600;
   cursor: pointer;
-  text-decoration: underline;
+  text-decoration: none;
 }

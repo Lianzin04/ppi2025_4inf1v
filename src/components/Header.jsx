@@ -59,7 +59,10 @@ export function Header({ isDark, setIsDark }) {
             {!user ? (
               <div className={styles.loginPrompt}>
                 <h2>Quase lá...</h2>
-                <p>Você precisa estar logado para espalhar sua luz no mural.</p>
+                {/* FRASE AUMENTADA AQUI */}
+                <p className={styles.highlightText}>
+                  Você precisa estar logado para espalhar sua luz no mundo
+                </p>
                 <button className={styles.sendBtn} onClick={() => { navigate("/login"); setIsFormOpen(false); }}>
                   <LogIn size={18} /> Ir para Login
                 </button>
@@ -93,7 +96,7 @@ export function Header({ isDark, setIsDark }) {
           <div className={styles.logoutConfirmWrapper}>
             {showLogoutConfirm ? (
               <div className={styles.confirmBox}>
-                <span>Deseja sair?</span>
+                <span>Sair?</span>
                 <div className={styles.confirmActions}>
                   <button className={styles.confirmBtn} onClick={handleLogout}>
                     <Check size={20} />
