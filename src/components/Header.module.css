@@ -34,7 +34,7 @@
   background: linear-gradient(135deg, #a5b4fc 0%, #818cf8 100%);
   color: white;
   padding: 0.8rem 2.2rem;
-  border-radius: 50px; /* Formato pílula */
+  border-radius: 50px;
   border: none;
   display: flex;
   align-items: center;
@@ -69,7 +69,7 @@
 }
 
 .messageWrapper {
-  position: relative; /* Para posicionar a caixa em relação a este container */
+  position: relative;
 }
 
 .messageBox {
@@ -119,4 +119,59 @@
 
 .sendBtn:hover {
   opacity: 0.9;
+}
+
+/* NOVOS BOTÕES NO CANTO INFERIOR DIREITO */
+
+.floatingLoginBtn {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  z-index: 2000;
+  background: #818cf8;
+  color: white;
+  border: none;
+  padding: 1rem 2rem;
+  border-radius: 50px;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  font-weight: 600;
+  font-size: 1.4rem;
+  cursor: pointer;
+  box-shadow: 0 8px 20px rgba(129, 140, 248, 0.4);
+  transition: transform 0.2s ease;
+}
+
+.floatingLoginBtn:hover {
+  transform: translateY(-5px);
+}
+
+.floatingUserBadge {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  z-index: 2000;
+  background: var(--bg-card);
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--glass-border);
+  padding: 0.8rem 1.8rem;
+  border-radius: 50px;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  color: var(--text-main);
+  font-size: 1.3rem;
+  font-weight: 600;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+}
+
+/* Ajuste mobile para não atrapalhar */
+@media (max-width: 600px) {
+  .floatingLoginBtn, .floatingUserBadge {
+    bottom: 1.5rem;
+    right: 1.5rem;
+    padding: 0.8rem 1.5rem;
+    font-size: 1.2rem;
+  }
 }
