@@ -31,7 +31,7 @@
 /* Ajustes para Celular */
 @media (max-width: 600px) {
   .heroContainer {
-    margin-top: 7rem; /* Sobe ainda mais no mobile */
+    margin-top: 110px; /* Sobe ainda mais no mobile */
     padding: 1rem 1.5rem;
   }
   
