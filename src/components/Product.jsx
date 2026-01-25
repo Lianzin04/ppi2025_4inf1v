@@ -24,11 +24,11 @@ export function Product({ product, onDelete, onUpdate }) {
     setIsEditing(false);
   };
 
-  // LÓGICA DE FONTE MAIS AGRESSIVA
+  // Lógica de tamanho de fonte otimizada para ocupar o card
   const getTextClass = (text) => {
     const length = text.length;
-    if (length > 100) return styles.extraSmall; 
-    if (length > 50) return styles.small;       
+    if (length > 120) return styles.extraSmall; 
+    if (length > 60) return styles.small;       
     return "";                                  
   };
 
@@ -43,30 +43,33 @@ export function Product({ product, onDelete, onUpdate }) {
             autoFocus
           />
           <div className={styles.editActions}>
-            <button className={styles.saveBtn} onClick={handleSave} title="Salvar">
+            <button className={styles.saveBtn} onClick={handleSave}>
               <Check size={18} /> Salvar
             </button>
-            <button className={styles.cancelBtn} onClick={handleCancel} title="Cancelar">
+            <button className={styles.cancelBtn} onClick={handleCancel}>
               <X size={18} />
             </button>
           </div>
         </div>
       ) : (
         <>
-          <p className={`${styles.messageText} ${getTextClass(product.content)}`}>
-            "{product.content}"
-          </p>
+          <div className={styles.messageWrapper}>
+            <p className={`${styles.messageText} ${getTextClass(product.content)}`}>
+              "{product.content}"
+            </p>
+          </div>
           
           <div className={styles.cardFooter}>
-            <small className={styles.authorName}>Por: {product.author}</small>
+            {/* AUTORIA EM PRETO AQUI */}
+            <span className={styles.authorName}>Por: {product.author}</span>
             
             {isOwner && (
               <div className={styles.actions}>
                 <button className={styles.editBtn} onClick={() => setIsEditing(true)}>
-                  <Pencil size={16} />
+                  <Pencil size={18} />
                 </button>
                 <button className={styles.deleteBtn} onClick={() => onDelete(product.id)}>
-                  <Trash2 size={16} />
+                  <Trash2 size={18} />
                 </button>
               </div>
             )}
