@@ -7,9 +7,9 @@ import { Sun, Moon, Plus, Send, LogIn, User, Check, X } from "lucide-react";
 
 export function Header({ isDark, setIsDark }) {
   const { addMessage } = useContext(CartContext);
-  const { user, signOut } = useContext(AuthContext);
+  const { user, logout } = useContext(AuthContext); // Usando 'logout' conforme definido no Context
   const [isFormOpen, setIsFormOpen] = useState(false);
-  const [showLogoutConfirm, setShowLogoutConfirm] = useState(false); // Novo estado
+  const [showLogoutConfirm, setShowLogoutConfirm] = useState(false);
   const [message, setMessage] = useState("");
   const navigate = useNavigate();
 
@@ -23,8 +23,9 @@ export function Header({ isDark, setIsDark }) {
   };
 
   const handleLogout = async () => {
-    await signOut();
+    await logout();
     setShowLogoutConfirm(false);
+    navigate("/"); // Opcional: garante que volte para a home ao sair
   };
 
   return (
@@ -74,7 +75,7 @@ export function Header({ isDark, setIsDark }) {
         </div>
       </header>
 
-      {/* BOTÃO FLUTUANTE DINÂMICO */}
+      {/* BOTÃO FLUTUANTE DINÂMICO NO CANTO INFERIOR DIREITO */}
       <div className={styles.floatingContainer}>
         {!user ? (
           <button className={styles.loginFloatBtn} onClick={() => navigate("/login")}>
@@ -87,11 +88,11 @@ export function Header({ isDark, setIsDark }) {
               <div className={styles.confirmBox}>
                 <span>Deseja sair?</span>
                 <div className={styles.confirmActions}>
-                  <button className={styles.confirmBtn} onClick={handleLogout}>
-                    <Check size={16} />
+                  <button className={styles.confirmBtn} onClick={handleLogout} title="Confirmar Sair">
+                    <Check size={18} />
                   </button>
-                  <button className={styles.cancelBtn} onClick={() => setShowLogoutConfirm(false)}>
-                    <X size={16} />
+                  <button className={styles.cancelBtn} onClick={() => setShowLogoutConfirm(false)} title="Cancelar">
+                    <X size={18} />
                   </button>
                 </div>
               </div>

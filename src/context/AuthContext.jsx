@@ -34,7 +34,11 @@ export function AuthProvider({ children }) {
     });
   };
 
-  const logout = () => supabase.auth.signOut();
+  // Melhorado para garantir que o estado local seja limpo
+  const logout = async () => {
+    await supabase.auth.signOut();
+    setUser(null);
+  };
 
   return (
     <AuthContext.Provider value={{ user, loading, login, signUp, logout }}>

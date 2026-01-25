@@ -29,7 +29,6 @@
   gap: 2rem;
 }
 
-/* ESTILO DO BOTÃO DA IMAGEM */
 .addBtn {
   background: linear-gradient(135deg, #a5b4fc 0%, #818cf8 100%);
   color: white;
@@ -46,12 +45,6 @@
   transition: all 0.2s ease;
 }
 
-.addBtn:hover {
-  transform: translateY(-1px);
-  box-shadow: 0 6px 20px rgba(129, 140, 248, 0.4);
-  filter: brightness(1.05);
-}
-
 .themeToggle {
   display: flex;
   align-items: center;
@@ -61,11 +54,6 @@
   color: var(--text-secondary);
   padding: 0.5rem 1rem;
   border-radius: 10px;
-  transition: background 0.2s;
-}
-
-.themeToggle:hover {
-  background: rgba(0,0,0,0.05);
 }
 
 .messageWrapper {
@@ -97,7 +85,6 @@
   border-radius: 10px;
   padding: 1rem;
   color: var(--text-main);
-  font-family: inherit;
   resize: none;
   outline: none;
 }
@@ -114,71 +101,14 @@
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
-  transition: opacity 0.2s;
 }
 
-.sendBtn:hover {
-  opacity: 0.9;
-}
+/* --- ESTILOS DO BOTÃO FLUTUANTE --- */
 
-/* NOVOS BOTÕES NO CANTO INFERIOR DIREITO */
-
-.floatingLoginBtn {
-  position: fixed;
-  bottom: 2rem;
-  right: 2rem;
-  z-index: 2000;
-  background: #818cf8;
-  color: white;
-  border: none;
-  padding: 1rem 2rem;
-  border-radius: 50px;
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  font-weight: 600;
-  font-size: 1.4rem;
-  cursor: pointer;
-  box-shadow: 0 8px 20px rgba(129, 140, 248, 0.4);
-  transition: transform 0.2s ease;
-}
-
-.floatingLoginBtn:hover {
-  transform: translateY(-5px);
-}
-
-.floatingUserBadge {
-  position: fixed;
-  bottom: 2rem;
-  right: 2rem;
-  z-index: 2000;
-  background: var(--bg-card);
-  backdrop-filter: blur(10px);
-  border: 1px solid var(--glass-border);
-  padding: 0.8rem 1.8rem;
-  border-radius: 50px;
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  color: var(--text-main);
-  font-size: 1.3rem;
-  font-weight: 600;
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
-}
-
-/* Ajuste mobile para não atrapalhar */
-@media (max-width: 600px) {
-  .floatingLoginBtn, .floatingUserBadge {
-    bottom: 1.5rem;
-    right: 1.5rem;
-    padding: 0.8rem 1.5rem;
-    font-size: 1.2rem;
-  }
-}
 .floatingContainer {
   position: fixed;
-  bottom: 2rem;
-  right: 2rem;
+  bottom: 2.5rem;
+  right: 2.5rem;
   z-index: 2000;
 }
 
@@ -186,78 +116,83 @@
   background: #818cf8;
   color: white;
   border: none;
-  padding: 1.2rem 2.5rem;
+  padding: 1.5rem 3rem;
   border-radius: 50px;
   display: flex;
   align-items: center;
-  gap: 1rem;
-  font-weight: 600;
+  gap: 1.2rem;
+  font-weight: 700;
+  font-size: 1.6rem;
   cursor: pointer;
-  box-shadow: 0 8px 20px rgba(129, 140, 248, 0.4);
+  box-shadow: 0 10px 25px rgba(129, 140, 248, 0.4);
+  transition: all 0.3s ease;
+}
+
+.loginFloatBtn:hover {
+  transform: translateY(-5px);
+  filter: brightness(1.1);
 }
 
 .floatingUserBadge {
   background: var(--bg-card);
-  backdrop-filter: blur(10px);
+  backdrop-filter: blur(12px);
   border: 1px solid var(--glass-border);
-  padding: 0.8rem 1.8rem;
+  padding: 1.2rem 2.5rem;
   border-radius: 50px;
   display: flex;
   align-items: center;
-  gap: 1rem;
+  gap: 1.2rem;
   color: var(--text-main);
   cursor: pointer;
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+  font-size: 1.5rem;
+  font-weight: 600;
 }
 
-/* CAIXA DE CONFIRMAÇÃO */
 .confirmBox {
   background: var(--bg-card);
   backdrop-filter: blur(15px);
-  border: 1px solid #f87171; /* Borda levemente avermelhada */
-  padding: 0.8rem 1.5rem;
+  border: 2px solid #f87171;
+  padding: 1.2rem 2.2rem;
   border-radius: 50px;
   display: flex;
   align-items: center;
-  gap: 1.5rem;
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
-  animation: slideUp 0.2s ease;
+  gap: 2rem;
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.2);
+  animation: slideUp 0.3s ease-out;
 }
 
 .confirmBox span {
-  font-size: 1.3rem;
-  font-weight: 600;
+  font-size: 1.5rem;
+  font-weight: 700;
   color: var(--text-main);
 }
 
 .confirmActions {
   display: flex;
-  gap: 0.8rem;
+  gap: 1rem;
 }
 
 .confirmBtn, .cancelBtn {
   border: none;
-  width: 30px;
-  height: 30px;
+  width: 38px;
+  height: 38px;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  transition: opacity 0.2s;
 }
 
-.confirmBtn {
-  background: #f87171;
-  color: white;
-}
-
-.cancelBtn {
-  background: rgba(0, 0, 0, 0.05);
-  color: var(--text-secondary);
-}
+.confirmBtn { background: #f87171; color: white; }
+.cancelBtn { background: rgba(0, 0, 0, 0.1); color: var(--text-secondary); }
 
 @keyframes slideUp {
   from { transform: translateY(10px); opacity: 0; }
   to { transform: translateY(0); opacity: 1; }
+}
+
+@media (max-width: 600px) {
+  .floatingContainer { bottom: 2rem; right: 2rem; }
+  .loginFloatBtn { padding: 1.2rem 2.2rem; font-size: 1.4rem; }
 }
