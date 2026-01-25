@@ -1,22 +1,44 @@
 .heroContainer {
-  padding: 2rem 5rem;
-  margin-top: 18rem; /* Para não ficar atrás do Header fixo */
+  padding: 2rem 5%;
+  margin-top: 18rem; /* Padrão desktop */
 }
 
 .heroCard {
   background: linear-gradient(135deg, #a5b4fc, #818cf8);
   border-radius: 3rem;
-  padding: 6rem 2rem;
+  padding: 6rem 2rem; /* Desktop mais espaçoso */
   text-align: center;
   box-shadow: 0 10px 30px rgba(129, 140, 248, 0.3);
 }
 
 .quote {
-  font-family: 'Georgia', serif; /* Para um ar mais poético */
+  font-family: 'Georgia', serif;
   font-size: 3.2rem;
   font-style: italic;
   color: white;
   max-width: 80rem;
   margin: 0 auto;
   line-height: 1.4;
+}
+
+/* =============================================
+   AJUSTES PARA CELULAR (CARD MAIS LARGO E FINO)
+   ============================================= */
+
+@media (max-width: 600px) {
+  .heroContainer {
+    margin-top: 9rem; /* Reduz a distância do header no mobile */
+    padding: 1rem 1.5rem;
+  }
+  
+  .heroCard {
+    /* Padding vertical reduzido drasticamente (2rem) para ficar largo */
+    padding: 2rem 1.5rem; 
+    border-radius: 2rem;
+  }
+
+  .quote {
+    font-size: 1.8rem; /* Texto menor para evitar que o card estique para baixo */
+    line-height: 1.2;
+  }
 }

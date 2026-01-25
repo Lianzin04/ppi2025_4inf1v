@@ -9,7 +9,7 @@
   flex-direction: column;
   justify-content: space-between;
   
-  /* Aspecto quadrado perfeito */
+  /* Aspecto quadrado no Desktop */
   aspect-ratio: 1 / 1; 
   transition: transform 0.3s ease;
 }
@@ -25,35 +25,25 @@
   color: var(--text-main);
   font-style: italic;
   text-align: center;
-  /* Garante que textos longos não quebrem o quadrado */
   display: -webkit-box;
   -webkit-line-clamp: 6;
   -webkit-box-orient: vertical;
   overflow: hidden;
 }
 
+/* FOOTER E BOTÕES */
 .cardFooter {
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: flex-end;
   padding-top: 1.5rem;
   border-top: 1px solid rgba(0, 0, 0, 0.05);
-}
-
-/* ... seus estilos anteriores ... */
-
-.cardFooter {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-end; /* Alinha os ícones na base */
-  padding-top: 1.5rem;
-  border-top: 1px solid rgba(0, 0, 0, 0.05);
-  margin-top: auto; /* Garante que o footer fique sempre embaixo */
+  margin-top: auto;
 }
 
 .actions {
   display: flex;
-  gap: 1rem;
+  gap: 0.8rem;
 }
 
 .editBtn, .deleteBtn {
@@ -66,9 +56,6 @@
   align-items: center;
   justify-content: center;
   transition: all 0.2s ease;
-}
-
-.editBtn {
   color: var(--text-secondary);
 }
 
@@ -77,15 +64,12 @@
   color: #818cf8;
 }
 
-.deleteBtn {
-  color: #fca5a5; /* Um vermelho suave para combinar com o tema */
-}
-
 .deleteBtn:hover {
   background: rgba(248, 113, 113, 0.1);
   color: #ef4444;
 }
-/* Container de Edição que ocupa o espaço do texto */
+
+/* EDIÇÃO INLINE */
 .editContainer {
   display: flex;
   flex-direction: column;
@@ -113,7 +97,6 @@
   gap: 0.8rem;
 }
 
-/* Botão Salvar (seguindo o padrão do seu SendBtn) */
 .saveBtn {
   background: #818cf8;
   color: white;
@@ -128,7 +111,6 @@
   gap: 0.5rem;
 }
 
-/* Botão Cancelar */
 .cancelBtn {
   background: rgba(0, 0, 0, 0.05);
   color: var(--text-secondary);
@@ -138,25 +120,30 @@
   cursor: pointer;
 }
 
-.saveBtn:hover, .cancelBtn:hover {
-  opacity: 0.8;
+/* =============================================
+   AJUSTES PARA CELULAR (RESPONSIVIDADE)
+   ============================================= */
+
+@media (max-width: 600px) {
+  .productCard {
+    /* Deixa de ser quadrado para ser mais largo e menor */
+    aspect-ratio: auto; 
+    min-height: 160px;
+    padding: 2rem;
+    border-radius: 18px;
+  }
+
+  .messageText {
+    font-size: 1.5rem; /* Diminui o texto para caber melhor */
+    -webkit-line-clamp: 4; /* Corta o texto mais cedo para economizar espaço */
+  }
+
+  .cardFooter {
+    padding-top: 1rem;
+  }
+  
+  .editBtn svg, .deleteBtn svg {
+    width: 16px; /* Ícones levemente menores no mobile */
+    height: 16px;
+  }
 }
-
-/* Mantendo os estilos dos ícones de deletar/editar no canto */
-.actions {
-  display: flex;
-  gap: 0.5rem;
-}
-
-.editBtn, .deleteBtn {
-  background: none;
-  border: none;
-  cursor: pointer;
-  padding: 0.5rem;
-  color: var(--text-secondary);
-  transition: color 0.2s;
-}
-
-.deleteBtn:hover { color: #f87171; }
-.editBtn:hover { color: #818cf8; }
-

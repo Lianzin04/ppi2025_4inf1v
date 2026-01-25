@@ -12,7 +12,29 @@
 
 .gridLayer {
   display: grid;
+  /* Valor padrão para Desktop */
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); 
   gap: 2.5rem;
   padding-bottom: 5rem;
+}
+
+/* =============================================
+   AJUSTES PARA CELULAR (RESPONSIVIDADE)
+   ============================================= */
+
+@media (max-width: 600px) {
+  .contentContainer {
+    padding-top: 70px; /* Reduz um pouco o topo no mobile */
+  }
+
+  .heroLayer {
+    margin-bottom: 3rem; /* Menos espaço entre o Hero e as mensagens */
+  }
+
+  .gridLayer {
+    /* Mágica: Diminuímos para 150px para caberem dois cards por linha */
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); 
+    gap: 1.2rem; /* Espaço menor entre os cards no celular */
+    padding: 0 1.5rem 4rem 1.5rem; /* Padding lateral para os cards não colarem na borda da tela */
+  }
 }
