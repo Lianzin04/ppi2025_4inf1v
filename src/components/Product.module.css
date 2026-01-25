@@ -8,8 +8,6 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  
-  /* Aspecto quadrado no Desktop */
   aspect-ratio: 1 / 1; 
   transition: transform 0.3s ease;
 }
@@ -25,13 +23,21 @@
   color: var(--text-main);
   font-style: italic;
   text-align: center;
-  display: -webkit-box;
-  -webkit-line-clamp: 6;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
+  /* Quebra de palavras longas */
+  word-wrap: break-word;
+  overflow-wrap: break-word;
 }
 
-/* FOOTER E BOTÕES */
+/* CLASSES DE TAMANHO DINÂMICO */
+.small {
+  font-size: 1.5rem;
+}
+
+.extraSmall {
+  font-size: 1.2rem;
+  line-height: 1.3;
+}
+
 .cardFooter {
   display: flex;
   justify-content: space-between;
@@ -59,17 +65,9 @@
   color: var(--text-secondary);
 }
 
-.editBtn:hover {
-  background: rgba(129, 140, 248, 0.1);
-  color: #818cf8;
-}
+.editBtn:hover { background: rgba(129, 140, 248, 0.1); color: #818cf8; }
+.deleteBtn:hover { background: rgba(248, 113, 113, 0.1); color: #ef4444; }
 
-.deleteBtn:hover {
-  background: rgba(248, 113, 113, 0.1);
-  color: #ef4444;
-}
-
-/* EDIÇÃO INLINE */
 .editContainer {
   display: flex;
   flex-direction: column;
@@ -121,29 +119,35 @@
 }
 
 /* =============================================
-   AJUSTES PARA CELULAR (RESPONSIVIDADE)
+   AJUSTES PARA CELULAR
    ============================================= */
 
 @media (max-width: 600px) {
   .productCard {
-    /* Deixa de ser quadrado para ser mais largo e menor */
     aspect-ratio: auto; 
-    min-height: 160px;
-    padding: 2rem;
+    min-height: 180px; /* Aumentado levemente para caber mais texto */
+    padding: 1.8rem;
     border-radius: 18px;
   }
 
   .messageText {
-    font-size: 1.5rem; /* Diminui o texto para caber melhor */
-    -webkit-line-clamp: 4; /* Corta o texto mais cedo para economizar espaço */
+    font-size: 1.4rem;
+    /* REMOVIDO line-clamp para o texto não sumir */
+    overflow: visible;
+    display: block; 
+  }
+
+  /* Ajustes dinâmicos no mobile */
+  .small {
+    font-size: 1.2rem;
+  }
+
+  .extraSmall {
+    font-size: 1.0rem;
+    line-height: 1.2;
   }
 
   .cardFooter {
     padding-top: 1rem;
-  }
-  
-  .editBtn svg, .deleteBtn svg {
-    width: 16px; /* Ícones levemente menores no mobile */
-    height: 16px;
   }
 }

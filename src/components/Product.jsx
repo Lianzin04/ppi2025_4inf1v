@@ -20,8 +20,16 @@ export function Product({ product, onDelete, onUpdate }) {
   };
 
   const handleCancel = () => {
-    setEditValue(product.content); // Reseta para o valor original
+    setEditValue(product.content);
     setIsEditing(false);
+  };
+
+  // FUNÇÃO PARA AJUSTAR O TAMANHO DA FONTE DINAMICAMENTE
+  const getTextClass = (text) => {
+    const length = text.length;
+    if (length > 120) return styles.extraSmall; // Texto muito longo
+    if (length > 60) return styles.small;       // Texto médio
+    return "";                                  // Texto curto
   };
 
   return (
@@ -45,7 +53,10 @@ export function Product({ product, onDelete, onUpdate }) {
         </div>
       ) : (
         <>
-          <p className={styles.messageText}>"{product.content}"</p>
+          {/* APLICAÇÃO DA CLASSE DINÂMICA AQUI */}
+          <p className={`${styles.messageText} ${getTextClass(product.content)}`}>
+            "{product.content}"
+          </p>
           
           <div className={styles.cardFooter}>
             <small>Por: {product.author}</small>
