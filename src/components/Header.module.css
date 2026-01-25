@@ -175,3 +175,89 @@
     font-size: 1.2rem;
   }
 }
+.floatingContainer {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  z-index: 2000;
+}
+
+.loginFloatBtn {
+  background: #818cf8;
+  color: white;
+  border: none;
+  padding: 1.2rem 2.5rem;
+  border-radius: 50px;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 8px 20px rgba(129, 140, 248, 0.4);
+}
+
+.floatingUserBadge {
+  background: var(--bg-card);
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--glass-border);
+  padding: 0.8rem 1.8rem;
+  border-radius: 50px;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  color: var(--text-main);
+  cursor: pointer;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+}
+
+/* CAIXA DE CONFIRMAÇÃO */
+.confirmBox {
+  background: var(--bg-card);
+  backdrop-filter: blur(15px);
+  border: 1px solid #f87171; /* Borda levemente avermelhada */
+  padding: 0.8rem 1.5rem;
+  border-radius: 50px;
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+  animation: slideUp 0.2s ease;
+}
+
+.confirmBox span {
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: var(--text-main);
+}
+
+.confirmActions {
+  display: flex;
+  gap: 0.8rem;
+}
+
+.confirmBtn, .cancelBtn {
+  border: none;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+
+.confirmBtn {
+  background: #f87171;
+  color: white;
+}
+
+.cancelBtn {
+  background: rgba(0, 0, 0, 0.05);
+  color: var(--text-secondary);
+}
+
+@keyframes slideUp {
+  from { transform: translateY(10px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
