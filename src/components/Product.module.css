@@ -40,13 +40,123 @@
   border-top: 1px solid rgba(0, 0, 0, 0.05);
 }
 
-.likes, .saveBtn {
+/* ... seus estilos anteriores ... */
+
+.cardFooter {
   display: flex;
-  align-items: center;
-  gap: 0.6rem;
-  font-size: 1.3rem;
-  color: var(--text-secondary);
+  justify-content: space-between;
+  align-items: flex-end; /* Alinha os ícones na base */
+  padding-top: 1.5rem;
+  border-top: 1px solid rgba(0, 0, 0, 0.05);
+  margin-top: auto; /* Garante que o footer fique sempre embaixo */
+}
+
+.actions {
+  display: flex;
+  gap: 1rem;
+}
+
+.editBtn, .deleteBtn {
   background: none;
   border: none;
   cursor: pointer;
+  padding: 0.5rem;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
 }
+
+.editBtn {
+  color: var(--text-secondary);
+}
+
+.editBtn:hover {
+  background: rgba(129, 140, 248, 0.1);
+  color: #818cf8;
+}
+
+.deleteBtn {
+  color: #fca5a5; /* Um vermelho suave para combinar com o tema */
+}
+
+.deleteBtn:hover {
+  background: rgba(248, 113, 113, 0.1);
+  color: #ef4444;
+}
+/* Container de Edição que ocupa o espaço do texto */
+.editContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  height: 100%;
+}
+
+.editTextarea {
+  flex: 1;
+  width: 100%;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--glass-border);
+  border-radius: 12px;
+  padding: 1rem;
+  color: var(--text-main);
+  font-family: inherit;
+  font-size: 1.6rem;
+  resize: none;
+  outline: none;
+}
+
+.editActions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.8rem;
+}
+
+/* Botão Salvar (seguindo o padrão do seu SendBtn) */
+.saveBtn {
+  background: #818cf8;
+  color: white;
+  border: none;
+  padding: 0.6rem 1.2rem;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 1.2rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* Botão Cancelar */
+.cancelBtn {
+  background: rgba(0, 0, 0, 0.05);
+  color: var(--text-secondary);
+  border: 1px solid var(--glass-border);
+  padding: 0.6rem;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.saveBtn:hover, .cancelBtn:hover {
+  opacity: 0.8;
+}
+
+/* Mantendo os estilos dos ícones de deletar/editar no canto */
+.actions {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.editBtn, .deleteBtn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.5rem;
+  color: var(--text-secondary);
+  transition: color 0.2s;
+}
+
+.deleteBtn:hover { color: #f87171; }
+.editBtn:hover { color: #818cf8; }
+
