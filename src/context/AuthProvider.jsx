@@ -24,19 +24,10 @@ export default function App() {
     <AuthProvider>
       <CartProvider>
         <div className="app-container">
-          {/* O Header recebe o estado do tema */}
           <Header isDark={isDark} setIsDark={setIsDark} />
-          
           <Routes>
-            {/* Página Principal com a lista e o Hero */}
-            <Route
-              path="/"
-              element={<ProductList isDark={isDark} />}
-            />
-            {/* Página do Carrinho */}
+            <Route path="/" element={<ProductList isDark={isDark} />} />
             <Route path="/cart" element={<Cart />} />
-            
-            {/* Página de Login/Cadastro que você pediu */}
             <Route path="/login" element={<Login />} />
           </Routes>
         </div>

@@ -1,5 +1,5 @@
 import { useState, useEffect, createContext } from "react";
-import { supabase } from "../utils/supabase"; 
+import { supabase } from "../utils/supabase";
 
 export const CartContext = createContext({
   products: [],
@@ -11,11 +11,10 @@ export const CartContext = createContext({
 });
 
 export function CartProvider({ children }) {
-  const [products, setProducts] = useState([]); 
+  const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  // 1. READ: Buscar mensagens do Supabase
   async function fetchMessages() {
     setLoading(true);
     try {
@@ -28,7 +27,6 @@ export function CartProvider({ children }) {
       setProducts(data);
     } catch (err) {
       setError(err.message);
-      console.error("Erro ao buscar mensagens:", err.message);
     } finally {
       setLoading(false);
     }
@@ -38,62 +36,45 @@ export function CartProvider({ children }) {
     fetchMessages();
   }, []);
 
-  // 2. CREATE: Adicionar nova mensagem
-  async function addMessage(content, author) {
+  async function addMessage(content, author, userId) {
     try {
       const { error } = await supabase
         .from("messages")
-        .insert([{ content, author: author || "Anônimo" }]);
+        .insert([{ 
+          content, 
+          author: author || "Anônimo",
+          user_id: userId 
+        }]);
       
       if (error) throw error;
-      await fetchMessages(); // Recarrega a lista para mostrar a nova mensagem
+      await fetchMessages();
     } catch (err) {
       console.error("Erro ao adicionar:", err.message);
     }
   }
 
-  // 3. DELETE: Remover mensagem por ID
   async function deleteMessage(id) {
     try {
-      const { error } = await supabase
-        .from("messages")
-        .delete()
-        .eq("id", id);
-
+      const { error } = await supabase.from("messages").delete().eq("id", id);
       if (error) throw error;
-      // Atualiza o estado local para remover o card instantaneamente
       setProducts((prev) => prev.filter((msg) => msg.id !== id));
     } catch (err) {
       console.error("Erro ao deletar:", err.message);
     }
   }
 
-  // 4. UPDATE: Editar conteúdo da mensagem
   async function updateMessage(id, newContent) {
     try {
-      const { error } = await supabase
-        .from("messages")
-        .update({ content: newContent })
-        .eq("id", id);
-      
+      const { error } = await supabase.from("messages").update({ content: newContent }).eq("id", id);
       if (error) throw error;
-      await fetchMessages(); // Recarrega para refletir a edição
+      await fetchMessages();
     } catch (err) {
       console.error("Erro ao atualizar:", err.message);
     }
   }
 
-  const context = {
-    products, // Mantemos o nome 'products' para não quebrar seu .map no ProductList
-    loading,
-    error,
-    addMessage,
-    deleteMessage,
-    updateMessage,
-  };
-
   return (
-    <CartContext.Provider value={context}>
+    <CartContext.Provider value={{ products, loading, error, addMessage, deleteMessage, updateMessage }}>
       {children}
     </CartContext.Provider>
   );
