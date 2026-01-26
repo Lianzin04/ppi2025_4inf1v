@@ -1,6 +1,6 @@
 import { useState, useContext } from "react";
 import { AuthContext } from "../context/AuthContext";
-import { Pencil, Trash2, Check, X, Send } from "lucide-react";
+import { Pencil, Trash2, Check, X } from "lucide-react";
 import styles from "./Product.module.css";
 
 export function Product({ product, onDelete, onUpdate }) {
@@ -24,6 +24,7 @@ export function Product({ product, onDelete, onUpdate }) {
     setIsEditing(false);
   };
 
+  // Lógica de tamanho de fonte para ocupar bem o espaço do card
   const getTextClass = (text) => {
     const length = text.length;
     if (length > 120) return styles.extraSmall; 
@@ -56,7 +57,7 @@ export function Product({ product, onDelete, onUpdate }) {
         </div>
       </div>
 
-      {/* MODAL DE EDIÇÃO CENTRALIZADO */}
+      {/* MODAL DE EDIÇÃO CENTRALIZADO (Aparece fora do card) */}
       {isEditing && (
         <div className={styles.modalOverlay} onClick={handleCancel}>
           <div className={styles.centeredEditBox} onClick={(e) => e.stopPropagation()}>

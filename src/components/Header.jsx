@@ -37,7 +37,7 @@ export function Header({ isDark, setIsDark }) {
         <div className={styles.logo} onClick={() => navigate("/")} style={{cursor: 'pointer'}}>
           {/* A imagem "ponto.png" agora substitui o ícone do sol na logo */}
           <img src={logoImg} alt="Ponto de Luz" className={styles.logoImage} />
-          <span>Ponto de luz</span>
+          <span>PONTO DE LUZ</span>
         </div>
 
         <div className={styles.rightSection}>
