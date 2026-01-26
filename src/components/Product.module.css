@@ -3,15 +3,14 @@
   backdrop-filter: blur(12px);
   border: 1px solid var(--glass-border);
   border-radius: 24px;
-  padding: 2.5rem; /* Aumentei um pouco o respiro interno */
+  padding: 2.5rem;
   box-shadow: var(--shadow);
   display: flex;
   flex-direction: column;
-  justify-content: space-between; /* Garante que o autor fique sempre no rodapé */
-  min-height: 280px; /* Altura mínima para não ficar achatado com frases curtas */
-  transition: transform 0.3s ease, border-color 0.3s ease;
+  justify-content: space-between; /* Empurra o rodapé para baixo */
+  min-height: 280px; /* Garante que o card preencha bem o grid */
+  transition: transform 0.3s ease;
   position: relative;
-  overflow: hidden;
 }
 
 .productCard:hover {
@@ -20,35 +19,25 @@
 }
 
 .messageWrapper {
-  flex: 1; /* Faz esse container ocupar todo o espaço central */
+  flex: 1;
   display: flex;
-  align-items: center; /* Centraliza o texto verticalmente no espaço disponível */
+  align-items: center;
   justify-content: center;
-  width: 100%;
-  margin-bottom: 1.5rem;
 }
 
 .messageText {
   width: 100%;
-  font-size: 2.2rem; /* Aumentei um pouco a fonte padrão */
+  font-size: 2.2rem;
   font-weight: 500;
   line-height: 1.4;
   color: var(--text-main);
   font-style: italic;
-  margin: 0;
   text-align: center;
   word-break: break-word;
-  padding: 0.5rem;
 }
 
-/* Ajustes automáticos para textos muito longos */
-.small { 
-  font-size: 1.8rem; 
-}
-
-.extraSmall { 
-  font-size: 1.5rem; 
-}
+.small { font-size: 1.8rem; }
+.extraSmall { font-size: 1.5rem; }
 
 .cardFooter {
   width: 100%;
@@ -57,87 +46,86 @@
   align-items: center;
   padding-top: 1.5rem;
   border-top: 1px solid var(--glass-border);
+  margin-top: 1rem;
 }
 
-/* Mantendo o autor branco no modo escuro conforme solicitado */
 .authorName {
-  font-size: 1.3rem;
-  font-weight: 800; 
-  color: var(--text-secondary); 
+  font-size: 1.2rem;
+  font-weight: 800;
+  color: var(--text-secondary); /* Branco no escuro */
   text-transform: capitalize;
 }
 
-.actions { 
-  display: flex; 
-  gap: 1rem; 
-}
+.actions { display: flex; gap: 0.8rem; }
 
 .editBtn, .deleteBtn {
   background: none;
   border: none;
   cursor: pointer;
-  padding: 0.6rem;
-  border-radius: 10px;
   color: var(--accent);
-  transition: all 0.2s;
   opacity: 0.7;
-  display: flex;
-  align-items: center;
+  transition: 0.2s;
 }
 
-.editBtn:hover { 
-  background: rgba(255, 255, 255, 0.1); 
-  opacity: 1; 
+.editBtn:hover, .deleteBtn:hover { opacity: 1; transform: scale(1.1); }
+
+/* --- ESTILOS DO MODAL DE EDIÇÃO --- */
+.modalOverlay {
+  position: fixed;
+  top: 0; left: 0; width: 100%; height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(8px);
+  display: flex; justify-content: center; align-items: center;
+  z-index: 9999;
 }
 
-.deleteBtn:hover { 
-  color: #ef4444; 
-  background: rgba(239, 68, 68, 0.1); 
-  opacity: 1; 
+.centeredEditBox {
+  background: var(--bg-card);
+  width: 90%;
+  max-width: 500px;
+  padding: 3.5rem;
+  border-radius: 32px;
+  border: 1px solid var(--glass-border);
+  position: relative;
+  box-shadow: var(--shadow);
+  text-align: center;
 }
 
-/* EDIÇÃO */
-.editContainer { 
-  display: flex; 
-  flex-direction: column; 
-  gap: 1.2rem; 
-  width: 100%; 
-  height: 100%; 
+.modalTextarea {
+  width: 100%;
+  height: 150px;
+  background: rgba(0, 0, 0, 0.05);
+  border: 1px solid var(--glass-border);
+  border-radius: 15px;
+  padding: 1.5rem;
+  color: var(--text-main);
+  font-size: 1.6rem;
+  resize: none;
+  margin: 1.5rem 0;
 }
 
-.editTextarea { 
-  flex: 1; 
-  width: 100%; 
-  background: rgba(0,0,0,0.03); 
-  border: 1px solid var(--glass-border); 
-  border-radius: 12px; 
-  padding: 1.2rem; 
-  color: var(--text-main); 
-  font-size: 1.6rem; 
-  resize: none; 
-  outline: none;
+.saveBtnModal {
+  width: 100%;
+  background: var(--accent);
+  color: #0f172a;
+  border: none;
+  padding: 1.2rem;
+  border-radius: 15px;
+  font-weight: 700;
+  font-size: 1.6rem;
+  cursor: pointer;
+  display: flex; align-items: center; justify-content: center; gap: 1rem;
 }
 
-.saveBtn { 
-  background: var(--accent); 
-  color: #0f172a; 
-  border: none; 
-  padding: 0.8rem 1.5rem; 
-  border-radius: 10px; 
-  cursor: pointer; 
-  font-weight: 700; 
+.closeModal {
+  position: absolute;
+  top: 20px; right: 20px;
+  background: none; border: none;
+  color: var(--text-secondary);
+  cursor: pointer;
 }
 
-/* AJUSTES MOBILE */
-@media (max-width: 600px) {
-  .productCard { 
-    padding: 1.8rem; 
-    min-height: 220px; 
-  }
-  .messageText { 
-    font-size: 1.6rem; 
-  }
-  .authorName { 
-    font-size: 1.2rem; 
-  }
+.formContainer h2 {
+  color: var(--text-main);
+  font-size: 2rem;
 }

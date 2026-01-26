@@ -1,6 +1,6 @@
 import { useState, useContext } from "react";
 import { AuthContext } from "../context/AuthContext";
-import { Pencil, Trash2, Check, X } from "lucide-react";
+import { Pencil, Trash2, Check, X, Send } from "lucide-react";
 import styles from "./Product.module.css";
 
 export function Product({ product, onDelete, onUpdate }) {
@@ -24,7 +24,6 @@ export function Product({ product, onDelete, onUpdate }) {
     setIsEditing(false);
   };
 
-  // Lógica de tamanho de fonte otimizada para ocupar o card
   const getTextClass = (text) => {
     const length = text.length;
     if (length > 120) return styles.extraSmall; 
@@ -33,49 +32,53 @@ export function Product({ product, onDelete, onUpdate }) {
   };
 
   return (
-    <div className={styles.productCard}>
-      {isEditing ? (
-        <div className={styles.editContainer}>
-          <textarea
-            className={styles.editTextarea}
-            value={editValue}
-            onChange={(e) => setEditValue(e.target.value)}
-            autoFocus
-          />
-          <div className={styles.editActions}>
-            <button className={styles.saveBtn} onClick={handleSave}>
-              <Check size={18} /> Salvar
+    <>
+      <div className={styles.productCard}>
+        <div className={styles.messageWrapper}>
+          <p className={`${styles.messageText} ${getTextClass(product.content)}`}>
+            "{product.content}"
+          </p>
+        </div>
+        
+        <div className={styles.cardFooter}>
+          <span className={styles.authorName}>Por: {product.author}</span>
+          
+          {isOwner && (
+            <div className={styles.actions}>
+              <button className={styles.editBtn} onClick={() => setIsEditing(true)}>
+                <Pencil size={18} />
+              </button>
+              <button className={styles.deleteBtn} onClick={() => onDelete(product.id)}>
+                <Trash2 size={18} />
+              </button>
+            </div>
+          )}
+        </div>
+      </div>
+
+      {/* MODAL DE EDIÇÃO CENTRALIZADO */}
+      {isEditing && (
+        <div className={styles.modalOverlay} onClick={handleCancel}>
+          <div className={styles.centeredEditBox} onClick={(e) => e.stopPropagation()}>
+            <button className={styles.closeModal} onClick={handleCancel}>
+              <X size={24} />
             </button>
-            <button className={styles.cancelBtn} onClick={handleCancel}>
-              <X size={18} />
-            </button>
+            
+            <div className={styles.formContainer}>
+              <h2>Editar sua mensagem</h2>
+              <textarea
+                className={styles.modalTextarea}
+                value={editValue}
+                onChange={(e) => setEditValue(e.target.value)}
+                autoFocus
+              />
+              <button className={styles.saveBtnModal} onClick={handleSave}>
+                <Check size={18} /> Salvar Alterações
+              </button>
+            </div>
           </div>
         </div>
-      ) : (
-        <>
-          <div className={styles.messageWrapper}>
-            <p className={`${styles.messageText} ${getTextClass(product.content)}`}>
-              "{product.content}"
-            </p>
-          </div>
-          
-          <div className={styles.cardFooter}>
-            {/* AUTORIA EM PRETO AQUI */}
-            <span className={styles.authorName}>Por: {product.author}</span>
-            
-            {isOwner && (
-              <div className={styles.actions}>
-                <button className={styles.editBtn} onClick={() => setIsEditing(true)}>
-                  <Pencil size={18} />
-                </button>
-                <button className={styles.deleteBtn} onClick={() => onDelete(product.id)}>
-                  <Trash2 size={18} />
-                </button>
-              </div>
-            )}
-          </div>
-        </>
       )}
-    </div>
+    </>
   );
 }

@@ -763,3 +763,11 @@
   .logo { font-size: 1.6rem; }
 
 }
+
+.logoImage {
+  width: 40px; /* Ajuste o tamanho conforme preferir */
+  height: 40px;
+  object-fit: contain;
+  /* Se quiser um leve brilho no modo escuro: */
+  filter: drop-shadow(0 0 8px var(--accent));
+}
