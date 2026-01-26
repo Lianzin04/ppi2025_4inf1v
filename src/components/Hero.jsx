@@ -5,7 +5,7 @@ export function Hero() {
     <section className={styles.heroContainer}>
       <div className={styles.heroCard}>
         <p className={styles.quote}>
-          “O que você diria para si mesmo se soubesse que não pode falhar?”
+          “Seja a luz no dia de alguém. Deixe sua mensagem!”
         </p>
       </div>
     </section>
